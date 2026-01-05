@@ -1,0 +1,32 @@
+[0m16:39:01.216669 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75e31dec6c30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75e31e0b9460>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75e31dec6ba0>]}
+
+
+============================== 16:39:01.220983 | 821971bf-11fc-447b-88cd-d59498e190b9 ==============================
+[0m16:39:01.220983 [info ] [MainThread]: Running with dbt=1.11.0-rc1
+[0m16:39:01.221670 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'debug': 'False', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'cache_selected_only': 'False', 'no_print': 'None', 'empty': 'False', 'version_check': 'True', 'log_cache_events': 'False', 'invocation_command': 'dbt run --select dim_date', 'log_format': 'default', 'use_experimental_parser': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': '/home/femi/.dbt', 'use_colors': 'True', 'write_json': 'True', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'log_path': 'logs', 'quiet': 'False', 'target_path': 'None', 'introspect': 'True', 'static_parser': 'True'}
+[0m16:39:01.222361 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/femi/retail-lakehouse-aws/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m16:39:01.223694 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.07559311, "process_in_blocks": "50104", "process_kernel_time": 0.195791, "process_mem_max_rss": "99596", "process_out_blocks": "8", "process_user_time": 1.816064}
+[0m16:39:01.224340 [debug] [MainThread]: Command `dbt run` failed at 16:39:01.224213 after 0.08 seconds
+[0m16:39:01.224825 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75e31ffe2840>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75e31dd32f60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75e31dec6c30>]}
+[0m16:39:01.225324 [debug] [MainThread]: Flushing usage events
+[0m16:39:01.660696 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:06:37.058038 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722a73ee7980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722a73824680>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722a755d76b0>]}
+
+
+============================== 15:06:37.062929 | 4cfa32ba-b0dc-4ba3-a40f-0e50336d4b9c ==============================
+[0m15:06:37.062929 [info ] [MainThread]: Running with dbt=1.11.0-rc1
+[0m15:06:37.063684 [debug] [MainThread]: running dbt with arguments {'log_path': 'logs', 'quiet': 'False', 'partial_parse': 'True', 'log_cache_events': 'False', 'use_colors': 'True', 'target_path': 'None', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'debug': 'False', 'write_json': 'True', 'fail_fast': 'False', 'invocation_command': 'dbt run --select kpi_daily_trend.sql', 'introspect': 'True', 'empty': 'False', 'static_parser': 'True', 'profiles_dir': '/home/femi/.dbt', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'send_anonymous_usage_stats': 'True', 'no_print': 'None', 'version_check': 'True', 'printer_width': '80', 'warn_error': 'None'}
+[0m15:06:37.064290 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/femi/retail-lakehouse-aws/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m15:06:37.065561 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.07563517, "process_in_blocks": "50992", "process_kernel_time": 0.211372, "process_mem_max_rss": "99544", "process_out_blocks": "16", "process_user_time": 1.812047}
+[0m15:06:37.066127 [debug] [MainThread]: Command `dbt run` failed at 15:06:37.065993 after 0.08 seconds
+[0m15:06:37.066613 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722a73d66a20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722a73640500>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722a73e91100>]}
+[0m15:06:37.067090 [debug] [MainThread]: Flushing usage events
+[0m15:06:37.520691 [debug] [MainThread]: An error was encountered while trying to flush usage events

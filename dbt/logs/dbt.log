@@ -1,0 +1,103 @@
+[0m17:27:37.449652 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7edc2b56e2d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7edc298f2c60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7edc2b67ac90>]}
+
+
+============================== 17:27:37.453169 | e7d17679-65a3-46b3-98d6-f58e548e365b ==============================
+[0m17:27:37.453169 [info ] [MainThread]: Running with dbt=1.11.0-rc1
+[0m17:27:37.453826 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'indirect_selection': 'eager', 'log_path': 'logs', 'printer_width': '80', 'use_colors': 'True', 'static_parser': 'True', 'quiet': 'False', 'introspect': 'True', 'debug': 'False', 'version_check': 'True', 'no_print': 'None', 'log_cache_events': 'False', 'write_json': 'True', 'invocation_command': 'dbt init nyc_taxi_athena', 'send_anonymous_usage_stats': 'True', 'cache_selected_only': 'False', 'use_experimental_parser': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': '/home/femi/.dbt', 'partial_parse': 'True', 'warn_error': 'None', 'log_format': 'default', 'fail_fast': 'False', 'empty': 'None'}
+[0m17:27:37.464211 [info ] [MainThread]: Creating dbt configuration folder at /home/femi/.dbt
+[0m17:27:37.466085 [debug] [MainThread]: Starter project path: /home/femi/retail-lakehouse-aws/venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m17:27:37.470702 [info ] [MainThread]: 
+Your new dbt project "nyc_taxi_athena" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m17:27:37.471198 [info ] [MainThread]: Setting up your profile.
+[0m17:31:30.558746 [error] [MainThread]: Encountered an error:
+
+[0m17:31:30.573646 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/femi/retail-lakehouse-aws/venv/lib/python3.12/site-packages/dbt/cli/requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/femi/retail-lakehouse-aws/venv/lib/python3.12/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/femi/retail-lakehouse-aws/venv/lib/python3.12/site-packages/dbt/cli/main.py", line 483, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/home/femi/retail-lakehouse-aws/venv/lib/python3.12/site-packages/dbt/task/init.py", line 346, in run
+    self.setup_profile(profile_name)
+  File "/home/femi/retail-lakehouse-aws/venv/lib/python3.12/site-packages/dbt/task/init.py", line 262, in setup_profile
+    self.create_profile_from_target(adapter, profile_name=profile_name)
+  File "/home/femi/retail-lakehouse-aws/venv/lib/python3.12/site-packages/dbt/task/init.py", line 179, in create_profile_from_target
+    self.create_profile_from_profile_template(profile_template, profile_name)
+  File "/home/femi/retail-lakehouse-aws/venv/lib/python3.12/site-packages/dbt/task/init.py", line 163, in create_profile_from_profile_template
+    target = self.generate_target_from_input(prompts, initial_target)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/femi/retail-lakehouse-aws/venv/lib/python3.12/site-packages/dbt/task/init.py", line 129, in generate_target_from_input
+    target[key] = click.prompt(
+                  ^^^^^^^^^^^^^
+  File "/home/femi/retail-lakehouse-aws/venv/lib/python3.12/site-packages/click/termui.py", line 171, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/home/femi/retail-lakehouse-aws/venv/lib/python3.12/site-packages/click/termui.py", line 154, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m17:31:30.576735 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": false, "command_wall_clock_time": 233.19864, "process_in_blocks": "528", "process_kernel_time": 0.192218, "process_mem_max_rss": "120156", "process_out_blocks": "80", "process_user_time": 1.775781}
+[0m17:31:30.577340 [debug] [MainThread]: Command `dbt init` failed at 17:31:30.577200 after 233.20 seconds
+[0m17:31:30.577793 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7edc29347bf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7edc27c4d070>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7edc27e1bef0>]}
+[0m17:31:30.578339 [debug] [MainThread]: Flushing usage events
+[0m17:31:31.025591 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:31:49.935441 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x783f00e3a1e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x783f024d9c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x783f0135e390>]}
+
+
+============================== 17:31:49.938974 | 8b00ff08-fd4e-4219-9f74-b80fa076c904 ==============================
+[0m17:31:49.938974 [info ] [MainThread]: Running with dbt=1.11.0-rc1
+[0m17:31:49.939693 [debug] [MainThread]: running dbt with arguments {'introspect': 'True', 'empty': 'None', 'version_check': 'True', 'target_path': 'None', 'printer_width': '80', 'partial_parse': 'True', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'profiles_dir': '/home/femi/.dbt', 'invocation_command': 'dbt init nyc_taxi_athena', 'use_experimental_parser': 'False', 'warn_error': 'None', 'write_json': 'True', 'debug': 'False', 'log_format': 'default', 'no_print': 'None', 'use_colors': 'True', 'fail_fast': 'False', 'indirect_selection': 'eager', 'log_path': 'logs', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'quiet': 'False', 'static_parser': 'True', 'cache_selected_only': 'False'}
+[0m17:31:49.949267 [info ] [MainThread]: A project called nyc_taxi_athena already exists here.
+[0m17:31:49.950493 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 0.07741447, "process_in_blocks": "0", "process_kernel_time": 0.135751, "process_mem_max_rss": "100108", "process_out_blocks": "0", "process_user_time": 1.520213}
+[0m17:31:49.951111 [debug] [MainThread]: Command `dbt init` succeeded at 17:31:49.950928 after 0.08 seconds
+[0m17:31:49.951571 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x783f0053bf80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x783f00ca4b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x783f00ca6f60>]}
+[0m17:31:49.952178 [debug] [MainThread]: Flushing usage events
+[0m17:31:50.366883 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:39:01.699612 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x748cc8bd14c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x748cc931f830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x748ccad72060>]}
+
+
+============================== 17:39:01.702899 | a4981ff3-c230-4f64-96d5-07fea15a9137 ==============================
+[0m17:39:01.702899 [info ] [MainThread]: Running with dbt=1.11.0-rc1
+[0m17:39:01.703607 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'no_print': 'None', 'quiet': 'False', 'version_check': 'True', 'introspect': 'True', 'use_experimental_parser': 'False', 'log_format': 'default', 'profiles_dir': '/home/femi/.dbt', 'invocation_command': 'dbt init nyc_taxi_athena', 'send_anonymous_usage_stats': 'True', 'partial_parse': 'True', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'warn_error': 'None', 'target_path': 'None', 'empty': 'None', 'debug': 'False', 'fail_fast': 'False', 'static_parser': 'True', 'use_colors': 'True', 'log_path': 'logs', 'cache_selected_only': 'False', 'write_json': 'True', 'log_cache_events': 'False'}
+[0m17:39:01.713227 [debug] [MainThread]: Starter project path: /home/femi/retail-lakehouse-aws/venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m17:39:01.716077 [info ] [MainThread]: 
+Your new dbt project "nyc_taxi_athena" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m17:39:01.716556 [info ] [MainThread]: Setting up your profile.
+[0m17:43:13.756697 [info ] [MainThread]: Profile nyc_taxi_athena written to /home/femi/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m17:43:13.757894 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 252.12073, "process_in_blocks": "0", "process_kernel_time": 0.148708, "process_mem_max_rss": "119996", "process_out_blocks": "88", "process_user_time": 1.817438}
+[0m17:43:13.758525 [debug] [MainThread]: Command `dbt init` succeeded at 17:43:13.758411 after 252.12 seconds
+[0m17:43:13.759103 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x748cc90451f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x748ccad72060>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x748cc7e8b170>]}
+[0m17:43:13.759647 [debug] [MainThread]: Flushing usage events
+[0m17:43:14.196756 [debug] [MainThread]: An error was encountered while trying to flush usage events
