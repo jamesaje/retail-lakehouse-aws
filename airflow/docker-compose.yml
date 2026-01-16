@@ -1,0 +1,72 @@
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  airflow-webserver:
+    build: .
+    user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__FERNET_KEY: ""
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "false"
+      # AWS region for boto3 calls inside tasks
+      AWS_DEFAULT_REGION: us-west-1
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - ./dbt:/opt/airflow/dbt
+      # Mount your AWS + dbt profiles for auth
+      - /home/femi/.aws:/home/airflow/.aws:ro
+      - /home/femi/.dbt:/home/airflow/.dbt:ro
+
+    ports:
+      - "8080:8080"
+    command: >
+      bash -lc "
+      airflow db migrate &&
+      airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com || true &&
+      airflow webserver
+      "
+    restart: unless-stopped
+
+  airflow-scheduler:
+    build: .
+    user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__FERNET_KEY: ""
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AWS_DEFAULT_REGION: us-west-1
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - ./dbt:/opt/airflow/dbt
+      - /home/femi/.aws:/home/airflow/.aws:ro
+      - /home/femi/.dbt:/home/airflow/.dbt:ro
+
+    command: >
+      bash -lc "
+      airflow db migrate &&
+      airflow scheduler
+      "
+    restart: unless-stopped
+
+volumes:
+  postgres-db-volume:

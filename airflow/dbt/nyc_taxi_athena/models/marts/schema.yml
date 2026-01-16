@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: stg_yellow_trips
+    description: "Standardized view of cleaned yellow taxi trips"
+    columns:
+      - name: pickup_ts
+        tests: [not_null]
+      - name: dropoff_ts
+        tests: [not_null]
+      - name: vendor_id
+        tests: [not_null]
+      - name: payment_type
+        tests: [not_null]
+      - name: pickup_year
+        tests: [not_null]
+      - name: pickup_month
+        tests: [not_null]
+
+  - name: dim_date
+    description: "Date dimension derived from pickup timestamps"
+    columns:
+      - name: date_day
+        tests: [not_null, unique]
+
+  - name: fact_trips
+    description: "Trip-grain fact table with derived metrics"
+    columns:
+      - name: trip_id
+        tests: [not_null, unique]
+      - name: pickup_date
+        tests: [not_null]
+      - name: total_amount
+        tests: [not_null]
+      - name: pickup_year
+        tests: [not_null]
+      - name: pickup_month
+        tests: [not_null]
+
+

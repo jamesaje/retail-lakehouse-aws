@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: nyc_taxi
+    description: "NYC Taxi tables catalogued in Glue and queried via Athena"
+    database: awsdatacatalog
+    schema: nyc_taxi_lakehouse
+    tables:
+      - name: cleaned_yellow
+        description: "Cleaned Yellow Taxi trips (Parquet, partitioned)"
