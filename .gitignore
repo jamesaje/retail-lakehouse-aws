@@ -1,21 +1,30 @@
-# --- Terraform (never commit) ---
+# Terraform
 **/.terraform/
 **/.terraform.lock.hcl
 **/terraform.tfstate
 **/terraform.tfstate.*
 **/.terraform.tfstate.lock.info
 
-# --- Data files (keep in S3, not git) ---
+# Data (keep in S3)
 data/
 **/*.parquet
-**/*.csv
-**/*.json
 
-# --- dbt build artifacts ---
+# dbt artifacts
 **/target/
 **/dbt_packages/
+
+logs/
 **/logs/
 
-# --- Python venv ---
+# Airflow runtime stuff
+airflow/logs/
+airflow/plugins/__pycache__/
+airflow/dags/__pycache__/
+airflow/.env
+
+# Python
 venv/
 .env
+__pycache__/
+*.pyc
+
