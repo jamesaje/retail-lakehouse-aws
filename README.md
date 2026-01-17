@@ -43,48 +43,46 @@ The pipeline ingests raw data into Amazon S3, transforms and curates it with AWS
 
 ### Data Flow Details
 1. Raw Ingestion (S3 – Raw Zone)
-- Raw NYC Taxi trip data stored in S3
-- Data retained in original structure for traceability
-- No transformations applied at this stage
+     - Raw NYC Taxi trip data stored in S3
+     - Data retained in original structure for traceability
+     - No transformations applied at this stage
 
 2. ELT with AWS Glue
-- Glue job written in PySpark
-- Parameterised by YEAR and MONTH
-- Reads raw data and:
-     - Standardises column names
-     - Casts data types
-     - Applies basic data quality filters
-     - Writes Parquet output partitioned by year/month
- - Output written to S3 Cleaned Zone
+     - Glue job written in PySpark
+     - Parameterised by YEAR and MONTH
+     - Reads raw data and:
+          - Standardises column names
+          - Casts data types
+          - Applies basic data quality filters
+          - Writes Parquet output partitioned by year/month
+      - Output written to S3 Cleaned Zone
 
 3. Metadata & Discovery
-- AWS Glue Crawler updates the Data Catalog
-- Athena automatically discovers new partitions
+     - AWS Glue Crawler updates the Data Catalog
+     - Athena automatically discovers new partitions
 
 4. Analytics Engineering with dbt
-- dbt models run directly on Athena
-- Layered modeling approach:
-    - Staging models: light cleaning and renaming
-    - Mart models: facts and dimensions
-- Incremental fact tables using insert_overwrite
-- Partition-aware modeling for performance and cost efficiency
+     - dbt models run directly on Athena
+     - Layered modeling approach:
+         - Staging models: light cleaning and renaming
+         - Mart models: facts and dimensions
+     - Incremental fact tables using insert_overwrite
+     - Partition-aware modeling for performance and cost efficiency
 
 5. Data Quality & Testing
-
 dbt tests enforce:
-- Not-null constraints
-- Uniqueness (surrogate keys)
-- Accepted values
-- Custom business logic tests (e.g. trip duration validity)
+     - Not-null constraints
+     - Uniqueness (surrogate keys)
+     - Accepted values
+     - Custom business logic tests (e.g. trip duration validity)
 
-Failures stop the pipeline and surface immediately in Airflow.
+     Failures stop the pipeline and surface immediately in Airflow.
 
 6. Orchestration with Airflow
-
 The DAG performs:
-- Start Glue job (parameterised)
-- Poll until completion
-- Run Glue Crawler
-- Poll crawler status
-- Execute dbt run
-- Execute dbt test (quality gate)
+     - Start Glue job (parameterised)
+     - Poll until completion
+     - Run Glue Crawler
+     - Poll crawler status
+     - Execute dbt run
+     - Execute dbt test (quality gate)
